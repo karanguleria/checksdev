@@ -176,7 +176,7 @@
                 $preselectedColorParent = jQuery('li.tc-active');
                 $preselectedColorParent.children("label").addClass("cfm-active-tab");
                 $preselectedColorParent.find('input.choose-color-radio').prop('checked', true);
-//                $preselectedColor = jQuery('input.choose-color-radio[checked=checked]');
+                $preselectedColor = jQuery('input.choose-color-radio[checked=checked]');
 //                $preselectedColorParent = $preselectedColor.parents('li');
 //                jQuery('input.choose-color-radio').closest('li').removeClass('tc-active');
 //                jQuery('input.choose-color-radio').not($preselectedColor).prop("checked", false);
@@ -503,10 +503,12 @@
      * Change image functionality
      **/
     $(".select-template").find('.select-template-tag').change(function () {
-        var temp_image = $(".select-template-tag").find('option:selected').data('image-variations').imagep.image_link;
-        $(".cfm-template-img").html("<img src='" + temp_image + "' id='cfm-template-img-image'>");
-        localStorage.setItem("layoutURL", temp_image);
-        updateTemplateImage();
+        if (typeof $(".select-template-tag").find('option:selected').data('image-variations') !== 'undefined') {
+            var temp_image = $(".select-template-tag").find('option:selected').data('image-variations').imagep.image_link;
+            $(".cfm-template-img").html("<img src='" + temp_image + "' id='cfm-template-img-image'>");
+            localStorage.setItem("layoutURL", temp_image);
+            updateTemplateImage();
+        }
     });
     $(".select-template").find('.sel-label').change(function () {
         var temp_image = $(".sel-label").find('option:selected').data('image-variations').imagep.image_link;

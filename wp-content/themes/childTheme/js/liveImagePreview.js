@@ -3,6 +3,7 @@
  **/
  
 jQuery(document).ready(function(){
+     updateTemplateImage();
     jQuery('input.live-preview').change(function(){
        updateTemplateImage();
     });    
@@ -19,7 +20,8 @@ jQuery(document).ready(function(){
 });
 function  updateTemplatebgImage(){
     jQuery('.cfm-template-img').find('img').attr('src', getTemplateImage());
-    jQuery('#template-preview-bg-hidden').val(getTemplateImage());
+     jQuery('#template-preview-bg-hidden').val(jQuery('img#cfm-bg-img-image').attr('src'));
+//    jQuery('#template-preview-bg-hidden').val(getTemplateImage());
 }
 
 function getTemplateImage(){
